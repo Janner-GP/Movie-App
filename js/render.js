@@ -27,7 +27,7 @@ export function renderMovies(movies) {
             <p class="text-zinc-400 text-sm/6 mt-2 ml-2 mb-2 line-clamp-4">
                 ${element.overview}
             </p>
-            <button type="button" class="bg-indigo-600 hover:bg-indigo-700 transition cursor-pointer mt-4 mb-3 ml-2 px-6 py-2 font-medium rounded-md text-white text-sm">
+            <button type="button" data-movie-id="${element.id}" class="bg-indigo-600 hover:bg-indigo-700 transition cursor-pointer mt-4 mb-3 ml-2 px-6 py-2 font-medium rounded-md text-white text-sm">
                 Agregar a Favoritos
             </button>
         </div>`;

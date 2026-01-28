@@ -2,7 +2,7 @@ import { renderMovies, renderPaginator } from "../js/render.js"
 import { state } from "../js/state.js"
 
 const url = 'https://api.themoviedb.org/3'
-const token = 'tu_token'
+const token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNmQyYWY3NGM4NDlmMmQxMjMwYTZmYTg2MzcwMzgyZiIsIm5iZiI6MTcwNDk4Nzg4NC4xOTI5OTk4LCJzdWIiOiI2NWEwMGNlY2YwNjQ3YzAxMmJhNDU3MDUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.c8VeTnSBbCkhF-z1VeRMWcAbOXzQTvJCbl3-4cDziCk'
 
 const headers = {
     "Authorization": `Bearer ${token}`
