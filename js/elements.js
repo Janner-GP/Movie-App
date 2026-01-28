@@ -1,0 +1,5 @@
+export const paginator = document.getElementById("paginator")
+export const containerMovies = document.getElementById("container-movies")
+export const wordToSearch = document.getElementById("wordToSearch")
+export const btnSearch = document.getElementById("btnSearch")
+export const selectGender = document.getElementById('selec-genre')
