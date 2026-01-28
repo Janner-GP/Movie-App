@@ -7,7 +7,6 @@ async function main() {
     setupListeners();
     await getAllGenres();
     await getAllMovies();
-    renderPaginator(state.totalPages);
     renderGenre(state.genres)
 }
 

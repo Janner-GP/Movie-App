@@ -1,6 +1,7 @@
 
 import { containerMovies, paginator } from "./elements.js";
 import { selectGender } from "./elements.js";
+import { state } from "./state.js";
 
 const imageUrl = 'https://image.tmdb.org/t/p/original'
 
@@ -8,6 +9,12 @@ export function renderMovies(movies) {
 
     // limpiar el contenedor
     containerMovies.innerHTML = "";
+
+    // Si se esta cargando los datos mostrar un loader
+    if (state.isLoading) {
+        containerMovies.innerHTML = `<p class="text-center col-span-full">Loading...</p>`
+        return
+    }
 
     //Recorrer peliculas y agregar dentro de container movies
     movies.forEach(element => {
@@ -37,18 +44,18 @@ export function renderPaginator(numberPages) {
 
         if (i <= 10 || i === numberPages) {
             paginator.innerHTML += `
-                <button type="button"
-                    class="flex items-center justify-center
-                           active:scale-95
-                           w-9 md:w-12 h-9 md:h-12
-                           bg-white border border-gray-200
-                           rounded-md hover:bg-gray-100/70
-                           transition-all">${i}</button>
+                <button
+                    type="button"
+                    class="page-btn
+                           w-12 h-12 rounded-md border
+                           ${parseInt(state.actuallyPage) === i
+                               ? 'bg-indigo-500 text-white border-indigo-500'
+                               : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-100'}">${i}</button>
             `
         }
 
         if (i === 10 && numberPages > 10) {
-            paginator.innerHTML += `<span class="px-2">...</span>`
+            paginator.innerHTML += `<span class="flex items-center justify-center w-9 h-9 text-gray-500 select-none">...</span>`
         }
     }
 }

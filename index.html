@@ -4,47 +4,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movies App</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body>
-    <div class="container p-10 flex flex-col gap-5">
-        <div class="flex items-center gap-3 max-w-md w-full">
-            <div
-                class="flex items-center w-full border pl-3 gap-2 bg-white border-gray-500/30 h-[46px] rounded-md overflow-hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 30 30" fill="#6B7280">
-                    <path
-                        d="M13 3C7.489 3 3 7.489 3 13s4.489 10 10 10a9.95 9.95 0 0 0 6.322-2.264l5.971 5.971a1 1 0 1 0 1.414-1.414l-5.97-5.97A9.95 9.95 0 0 0 23 13c0-5.511-4.489-10-10-10m0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8-8-3.57-8-8 3.57-8 8-8" />
-                </svg>
-                <input type="text" id="wordToSearch" placeholder="Search for products"
-                    class="w-full h-full outline-none text-gray-500 placeholder-gray-500 text-sm">
-            </div>
-            <button id="btnSearch" type="submit" class="bg-indigo-500 w-32 h-[46px] rounded-md text-sm text-white">Search</button>
-        </div>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
 
-        <div class="w-full max-w-sm min-w-[200px]">
-            <div class="relative">
-                <select id="selec-genre"
+    <!-- NAVBAR -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <h1 class="text-lg font-semibold text-indigo-600">
+                🎬 MovieApp
+            </h1>
 
-                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded pl-3 pr-8 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md appearance-none cursor-pointer">
+            <div class="flex items-center gap-3 max-w-md w-full">
+                <div
+                    class="flex items-center w-full border pl-3 gap-2 bg-white border-gray-300 h-[40px] rounded-md overflow-hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" fill="#6B7280">
+                        <path
+                            d="M13 3C7.489 3 3 7.489 3 13s4.489 10 10 10a9.95 9.95 0 0 0 6.322-2.264l5.971 5.971a1 1 0 1 0 1.414-1.414l-5.97-5.97A9.95 9.95 0 0 0 23 13c0-5.511-4.489-10-10-10m0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8-8-3.57-8-8 3.57-8 8-8" />
+                    </svg>
+                    <input type="text" id="wordToSearch" placeholder="Search movies..."
+                        class="w-full h-full outline-none text-sm placeholder-gray-400">
+                </div>
 
-                </select>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"
-                    class="h-5 w-5 ml-1 absolute top-2.5 right-2.5 text-slate-700">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                </svg>
+                <button id="btnSearch"
+                    class="bg-indigo-500 hover:bg-indigo-600 transition text-white px-4 h-[40px] rounded-md text-sm">
+                    Search
+                </button>
             </div>
         </div>
+    </nav>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" id="container-movies"></div>
+    <!-- MAIN -->
+    <main class="flex-1">
+        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-6">
 
-        <div class="flex items-center gap-2 p-10 justify-center">
-            <div class="flex gap-2 text-gray-500 text-sm md:text-base" id="paginator">
+            <!-- FILTER -->
+            <div class="w-full max-w-xs">
+                <div class="relative">
+                    <select id="selec-genre"
+                        class="w-full bg-white text-sm border border-gray-300 rounded-md pl-3 pr-8 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500 appearance-none cursor-pointer">
+                    </select>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2"
+                        stroke="currentColor"
+                        class="h-5 w-5 absolute top-2.5 right-2.5 text-gray-500 pointer-events-none">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                    </svg>
+                </div>
             </div>
+
+            <!-- MOVIES GRID -->
+            <div id="container-movies" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            </div>
+
+            <!-- PAGINATOR -->
+            <div class="flex justify-center pt-6">
+                <div id="paginator" class="flex gap-2 text-sm text-gray-600">
+                </div>
+            </div>
+
         </div>
-    </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row gap-2 justify-between text-sm text-gray-500">
+            <span>© 2026 MovieApp</span>
+            <span>Built with Vanilla JS + Tailwind</span>
+        </div>
+    </footer>
 
     <script src="./js/main.js" type="module"></script>
 </body>
